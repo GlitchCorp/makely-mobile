@@ -17,82 +17,81 @@ class _LoginScreenState extends State<LoginScreen> {
                 preferredSize: Size.fromHeight(0.0), // here the desired height
                 child: AppBar(
                   backgroundColor: Colors.green,
-                  title: const Text('Sample Code 1234'),
                 )
             ),
-
-          // body: Stack(
-          //     children: <Widget>[
-          //       Container(
-          //         alignment: Alignment(0.7, -0.6),
-          //         child: Image.asset('assets/logos/example_logo.png')
-          //       ),
-          //       Container(
-          //           alignment: Alignment(0, 0),
-          //           child: Text("Rozpocznij")
-          //       ),
-          //       Container(
-          //           alignment: Alignment(0, 0.55),
-          //           height: 50.0,
-          //           width: 700.0,
-          //           child: SignInButton(
-          //             Buttons.Facebook,
-          //             onPressed: () {},
-          //           )
-          //
-          //       )
-          //     ],
-          // ),
-          body:               Container(
-            height: double.infinity,
-            child: SingleChildScrollView(
-              physics: AlwaysScrollableScrollPhysics(),
-              padding: EdgeInsets.symmetric(
-                horizontal: 40.0,
-                vertical: 120.0,
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+            body: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
+                        SizedBox(height: 70),
                         Container(
-                          alignment: Alignment(0.7, -0.6),
                           child: Image.asset('assets/logos/example_logo.png')
                         ),
-                        SizedBox(height: 25.0),
                         Container(
-                            alignment: Alignment(0, 0),
-                            child: Text("Rozpocznij")
+                            child: Text("Rozpocznij!",  style: TextStyle(fontWeight: FontWeight.bold, height: 4, fontSize: 30, color: Colors.green, fontFamily: 'TTCommons'))
                         ),
-                        SizedBox(height: 250.0),
                         Container(
-                            alignment: Alignment(0, 0.115),
-                            height: 50.0,
-                            width: 700.0,
-
-                            child: SignInButton(
-                              Buttons.Facebook,
-                              onPressed: () {},
-                            )
-
+                            margin: const EdgeInsets.fromLTRB(25, 0, 25, 25),
+                            child: Text("Utwórz nowe konto lub zaloguj się za pomocą istniejacego konta.", textAlign: TextAlign.center, style: TextStyle(fontSize: 18, fontFamily: 'TTCommons', fontWeight: FontWeight.w300))
                         ),
-                  SizedBox(height: 30.0),
-                  Container(
-                      alignment: Alignment(0, 0.115),
-                      height: 50.0,
-                      width: 400.0,
-
-                      child: SignInButton(
-                        Buttons.Google,
-                        onPressed: () {},
-                      )
-
-                  )
+                        Expanded(child: Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                          ),
+                        ),
+                        ),
+                      Container(
+                        height: 50.0,
+                        width: 300.0,
+                        child: SignInButton(
+                          Buttons.FacebookNew,
+                          onPressed: () {},
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      Container(
+                        height: 50.0,
+                        width: 300.0,
+                        child: SignInButton(
+                          Buttons.Email,
+                          onPressed: () {},
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      Container(
+                          margin: const EdgeInsets.fromLTRB(25, 0, 25, 0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("Masz już konto? ", textAlign: TextAlign.center, style: TextStyle(fontSize: 18, fontFamily: 'TTCommons', fontWeight: FontWeight.w300)),
+                              Text("Zaloguj się", textAlign: TextAlign.center, style: TextStyle(fontSize: 18, fontFamily: 'TTCommons', color: Colors.green))
+                            ],
+                          )
+                      ),
+                  //     Divider(
+                  //     ),
+                  //     Container(
+                  //     margin: const EdgeInsets.fromLTRB(25, 0, 25, 0),
+                  //     child: Row(
+                  //       mainAxisAlignment: MainAxisAlignment.center,
+                  //       children: [
+                  //         Text("Masz już konto? ", textAlign: TextAlign.center, style: TextStyle(fontSize: 18, fontFamily: 'TTCommons', fontWeight: FontWeight.w300)),
+                  //       ],
+                  //     )
+                  //
+                  // ),
+                        // SizedBox(height: 70),
+                        // Container(
+                        //     height: 50.0,
+                        //     width: 300.0,
+                        //     child: SignInButton(
+                        //       Buttons.Google,
+                        //       onPressed: () {},
+                        //     )
+                        // )
                 ],
               ),
             ),
-          )
-          ),
-        );
+          );
   }
 }
 
