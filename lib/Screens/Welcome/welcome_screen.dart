@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:makely/Screens/Welcome/register.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -22,12 +23,12 @@ class _LoginScreenState extends State<LoginScreen> {
             body: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                        SizedBox(height: 70),
+                        SizedBox(height: 0),
                         Container(
                           child: Image.asset('assets/logos/example_logo.png')
                         ),
                         Container(
-                            child: Text("Rozpocznij!",  style: TextStyle(fontWeight: FontWeight.bold, height: 4, fontSize: 30, color: Colors.green, fontFamily: 'TTCommons'))
+                            child: Text("Rozpocznij!",  style: TextStyle(fontWeight: FontWeight.bold, height: 2, fontSize: 30, color: Colors.green, fontFamily: 'TTCommons'))
                         ),
                         Container(
                             margin: const EdgeInsets.fromLTRB(25, 0, 25, 25),
@@ -39,26 +40,33 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                         ),
-                      Container(
-                        height: 50.0,
-                        width: 300.0,
-                        child: SignInButton(
-                          Buttons.FacebookNew,
-                          onPressed: () {},
-                        ),
-                      ),
+                      // Container(
+                      //   height: 50.0,
+                      //   width: 300.0,
+                      //   child: SignInButton(
+                      //     Buttons.FacebookNew,
+                      //     onPressed: () {},
+                      //   ),
+                      // ),
                       SizedBox(height: 20),
                       Container(
+                        margin: const EdgeInsets.fromLTRB(25, 0, 25, 25),
                         height: 50.0,
                         width: 300.0,
                         child: SignInButton(
                           Buttons.Email,
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => RegisterScreen()),
+                            );
+                          },
                         ),
                       ),
-                      SizedBox(height: 20),
+
+                      Divider(),
                       Container(
-                          margin: const EdgeInsets.fromLTRB(25, 0, 25, 0),
+                          margin: const EdgeInsets.fromLTRB(25, 0, 25, 25),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
