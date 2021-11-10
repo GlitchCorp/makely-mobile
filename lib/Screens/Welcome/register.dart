@@ -1,10 +1,44 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:http/http.dart' as http;
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class RegisterScreen extends StatefulWidget {
   @override
   _RegisterScreenState createState() => _RegisterScreenState();
 }
+
+register(String email, String password) async {
+  var url = Uri.parse('https://api.makely.app/api/users');
+  Map user_data = {
+    'email': email,
+    'password': password,
+    'username': email
+  };
+  Map data = {
+    'user': user_data
+  };
+  var body = json.encode(data);
+  final http.Response response = await http.post(
+    url,
+    headers: {"Content-Type": "application/json"},
+    body: body
+  );
+
+  var storage = FlutterSecureStorage();
+  storage.write(key: "api_token", value: "myvalue");
+  print(jsonDecode(response.body));
+  print(response.statusCode);
+  if (response.statusCode == 201) {
+    var resp = jsonDecode(response.body);
+    storage.write(key: "api_token", value: "myvalue");
+    return jsonDecode(response.body);
+  } else {
+    throw Exception('Failed to create album.');
+  }
+}
+
 
 class _RegisterScreenState extends State<RegisterScreen> {
   bool _passwordVisible = false;
@@ -14,6 +48,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
     _passwordVisible = false;
   }
 
+  final emailc = TextEditingController();
+  final passwordc = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +88,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   SizedBox(height: 15),
                   Container(
                       margin: const EdgeInsets.fromLTRB(25, 0, 25, 0),
-                      child: const TextField(
+                      child: TextField(
+                        controller: emailc,
                         decoration: InputDecoration(
                           labelText: 'E-mail',
                         ),
@@ -61,6 +98,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   Container(
                       margin: const EdgeInsets.fromLTRB(25, 0, 25, 0),
                       child: TextField(
+                        controller: passwordc,
                         obscureText: !_passwordVisible,
                         decoration: InputDecoration(
                           labelText: 'Password',
@@ -97,7 +135,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 fontSize: 20,
                                 color: Colors.green,
                                 fontFamily: 'TTCommons')),
-                        onPressed: () {},
+                        onPressed: () {
+                          register(emailc.text, passwordc.text);
+                        },
                       )
 
                   )

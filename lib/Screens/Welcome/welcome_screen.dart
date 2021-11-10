@@ -48,9 +48,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       //     onPressed: () {},
                       //   ),
                       // ),
-                      SizedBox(height: 20),
                       Container(
-                        margin: const EdgeInsets.fromLTRB(25, 0, 25, 25),
+                        margin: const EdgeInsets.fromLTRB(25, 0, 25, 0),
                         height: 50.0,
                         width: 300.0,
                         child: SignInButton(
