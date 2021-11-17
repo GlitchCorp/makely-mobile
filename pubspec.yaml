@@ -37,6 +37,13 @@ dependencies:
   flutter_signin_button: ^2.0.0
   flutter_secure_storage: ^4.2.1
   http: ^0.13.4
+  flutter_bloc: ^7.3.0
+  formz: ^0.4.0
+  equatable: ^2.0.0
+  authentication_repository:
+    path: packages/authentication_repository
+  user_repository:
+    path: packages/user_repository
 dev_dependencies:
   flutter_test:
     sdk: flutter

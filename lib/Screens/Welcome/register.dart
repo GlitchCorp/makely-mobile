@@ -28,8 +28,6 @@ register(String email, String password) async {
 
   var storage = FlutterSecureStorage();
   storage.write(key: "api_token", value: "myvalue");
-  print(jsonDecode(response.body));
-  print(response.statusCode);
   if (response.statusCode == 201) {
     var resp = jsonDecode(response.body);
     storage.write(key: "api_token", value: "myvalue");

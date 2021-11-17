@@ -40,14 +40,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                         ),
-                      // Container(
-                      //   height: 50.0,
-                      //   width: 300.0,
-                      //   child: SignInButton(
-                      //     Buttons.FacebookNew,
-                      //     onPressed: () {},
-                      //   ),
-                      // ),
                       Container(
                         margin: const EdgeInsets.fromLTRB(25, 0, 25, 0),
                         height: 50.0,
