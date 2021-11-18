@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
-import 'package:makely/Screens/Welcome/register.dart';
+//import 'package:makely/Screens/Welcome/register.dart';
 
-class LoginScreen extends StatefulWidget {
-  @override
-  _LoginScreenState createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
+class LoginScreenState extends StatelessWidget {
+  static Route route() {
+    return MaterialPageRoute<void>(builder: (_) => LoginScreenState());
+  }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'Example',
-        home: Scaffold(
+    return Scaffold(
             appBar: PreferredSize(
                 preferredSize: Size.fromHeight(0.0), // here the desired height
                 child: AppBar(
@@ -44,15 +40,15 @@ class _LoginScreenState extends State<LoginScreen> {
                         margin: const EdgeInsets.fromLTRB(25, 0, 25, 0),
                         height: 50.0,
                         width: 300.0,
-                        child: SignInButton(
-                          Buttons.Email,
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => RegisterScreen()),
-                            );
-                          },
-                        ),
+                        // child: SignInButton(
+                        //   Buttons.Email,
+                        //   onPressed: () {
+                        //     Navigator.push(
+                        //       context,
+                        //       MaterialPageRoute(builder: (context) => RegisterScreen()),
+                        //     );
+                        //   },
+                        // ),
                       ),
 
                       Divider(),
@@ -89,7 +85,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         // )
                 ],
               ),
-            ),
           );
   }
 }

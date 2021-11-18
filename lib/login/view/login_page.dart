@@ -11,10 +11,33 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Login')),
-      body: Padding(
-        padding: const EdgeInsets.all(12),
-        child: BlocProvider(
+      appBar: AppBar(
+        toolbarHeight: 125,
+        leading: new IconButton(
+          icon: new Icon(Icons.close, color: Colors.white),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        title: Column(children: [
+          Align(
+              alignment: Alignment.topLeft,
+              child: Text("Dołącz teraz",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30,
+                      color: Colors.white,
+                      fontFamily: 'TTCommons'))),
+          Text(
+              "Uzupełnij informacje dotyczące Twojego konta, aby zarejestrować się w aplikacji.",
+              softWrap: false,
+              maxLines: 5,
+              style: TextStyle(
+                  fontSize: 18,
+                  fontFamily: 'TTCommons',
+                  fontWeight: FontWeight.w300))
+        ]),
+        backgroundColor: Colors.green,
+      ),
+      body: BlocProvider(
           create: (context) {
             return LoginBloc(
               authenticationRepository:
@@ -22,7 +45,6 @@ class LoginPage extends StatelessWidget {
             );
           },
           child: LoginForm(),
-        ),
       ),
     );
   }

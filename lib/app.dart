@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:makely/authentication/authentication.dart';
 import 'package:makely/home/home.dart';
-import 'package:makely/login/login.dart';
 import 'package:makely/splash/splash.dart';
+import 'package:makely/welcome_screen/welcome_screen.dart';
 import 'package:user_repository/user_repository.dart';
 
 class App extends StatelessWidget {
@@ -58,7 +58,7 @@ class _AppViewState extends State<AppView> {
                 break;
               case AuthenticationStatus.unauthenticated:
                 _navigator.pushAndRemoveUntil<void>(
-                  LoginPage.route(),
+                  WelcomeScreen.route(),
                       (route) => false,
                 );
                 break;
