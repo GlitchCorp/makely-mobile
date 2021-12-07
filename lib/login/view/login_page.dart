@@ -20,7 +20,7 @@ class LoginPage extends StatelessWidget {
         title: Column(children: [
           Align(
               alignment: Alignment.topLeft,
-              child: Text("Dołącz teraz",
+              child: Text("Dołącz teraz!",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 30,

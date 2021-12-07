@@ -25,32 +25,8 @@ class LoginForm extends StatelessWidget {
                   child: _EmailInput()),
               SizedBox(height: 30),
               Container(
-                margin: const EdgeInsets.fromLTRB(25, 0, 25, 0),
-                child: TextField(
-                  // controller: passwordc,
-                  // obscureText: !_passwordVisible,
-                  decoration: InputDecoration(
-                    labelText: 'Password',
-                    suffixIcon: IconButton(
-                      icon: Icon(
-                        // Based on passwordVisible state choose the icon
-                        // _passwordVisible
-                        //     ? Icons.visibility
-                        //     : Icons.visibility_off,
-
-                        Icons.visibility,
-                        color: Colors.black,
-                      ),
-                      onPressed: () {
-                        // Update the state i.e. toogle the state of passwordVisible variable
-                        // setState(() {
-                        //   _passwordVisible = !_passwordVisible;
-                        // });
-                      },
-                    ),
-                  ),
-                ),
-              ),
+                  margin: const EdgeInsets.fromLTRB(25, 0, 25, 0),
+                  child: _PasswordInput()),
               Expanded(
                 child: Align(
                   alignment: Alignment.bottomCenter,
@@ -58,16 +34,7 @@ class LoginForm extends StatelessWidget {
                 ),
               ),
               Divider(),
-              Container(
-                  child: TextButton(
-                child: Text("Dalej",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: Colors.green,
-                        fontFamily: 'TTCommons')),
-                onPressed: () {},
-              ))
+              _LoginButton()
             ]));
   }
 }

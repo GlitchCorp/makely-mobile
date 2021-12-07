@@ -23,7 +23,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       LoginEmailChanged event,
       Emitter<LoginState> emit,
       ) {
-    final email = Username.dirty(event.email);
+    final email = Email.dirty(event.email);
     emit(state.copyWith(
       email: email,
       status: Formz.validate([state.password, email]),
@@ -48,8 +48,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     if (state.status.isValidated) {
       emit(state.copyWith(status: FormzStatus.submissionInProgress));
       try {
-        await _authenticationRepository.logIn(
-          username: state.email.value,
+        await _authenticationRepository.register(
+          email: state.email.value,
           password: state.password.value,
         );
         emit(state.copyWith(status: FormzStatus.submissionSuccess));
