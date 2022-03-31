@@ -1,27 +1,27 @@
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:makely/login/login.dart';
+import 'package:makely/register/register.dart';
 import 'package:formz/formz.dart';
 
-part 'login_event.dart';
-part 'login_state.dart';
+part 'register_event.dart';
+part 'register_state.dart';
 
-class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  LoginBloc({
+class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
+  RegisterBloc({
     required AuthenticationRepository authenticationRepository,
   })  : _authenticationRepository = authenticationRepository,
-        super(const LoginState()) {
-    on<LoginEmailChanged>(_onEmailChanged);
-    on<LoginPasswordChanged>(_onPasswordChanged);
-    on<LoginSubmitted>(_onSubmitted);
+        super(const RegisterState()) {
+    on<RegisterEmailChanged>(_onEmailChanged);
+    on<RegisterPasswordChanged>(_onPasswordChanged);
+    on<RegisterSubmitted>(_onSubmitted);
   }
 
   final AuthenticationRepository _authenticationRepository;
 
   void _onEmailChanged(
-      LoginEmailChanged event,
-      Emitter<LoginState> emit,
+      RegisterEmailChanged event,
+      Emitter<RegisterState> emit,
       ) {
     final email = Email.dirty(event.email);
     emit(state.copyWith(
@@ -31,8 +31,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   }
 
   void _onPasswordChanged(
-      LoginPasswordChanged event,
-      Emitter<LoginState> emit,
+      RegisterPasswordChanged event,
+      Emitter<RegisterState> emit,
       ) {
     final password = Password.dirty(event.password);
     emit(state.copyWith(
@@ -42,13 +42,13 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   }
 
   void _onSubmitted(
-      LoginSubmitted event,
-      Emitter<LoginState> emit,
+      RegisterSubmitted event,
+      Emitter<RegisterState> emit,
       ) async {
     if (state.status.isValidated) {
       emit(state.copyWith(status: FormzStatus.submissionInProgress));
       try {
-        await _authenticationRepository.logIn(
+        await _authenticationRepository.register(
           email: state.email.value,
           password: state.password.value,
         );

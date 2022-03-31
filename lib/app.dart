@@ -6,16 +6,19 @@ import 'package:makely/home/home.dart';
 import 'package:makely/splash/splash.dart';
 import 'package:makely/welcome_screen/welcome_screen.dart';
 import 'package:user_repository/user_repository.dart';
+import 'package:task_repository/task_repository.dart';
 
 class App extends StatelessWidget {
   const App({
     Key? key,
     required this.authenticationRepository,
     required this.userRepository,
+    required this.taskRepository
   }) : super(key: key);
 
   final AuthenticationRepository authenticationRepository;
   final UserRepository userRepository;
+  final TaskRepository taskRepository;
 
   @override
   Widget build(BuildContext context) {

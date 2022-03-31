@@ -36,10 +36,13 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_signin_button: ^2.0.0
   flutter_secure_storage: ^4.2.1
+  jwt_decoder: ^2.0.1
   http: ^0.13.4
   flutter_bloc: ^7.3.0
   formz: ^0.4.0
   equatable: ^2.0.0
+  task_repository:
+    path: packages/task_repository
   authentication_repository:
     path: packages/authentication_repository
   user_repository:
@@ -70,6 +73,7 @@ flutter:
     - assets/logos/example_logo.png
     - assets/logos/facebook.jpg
     - assets/logos/google.jpg
+    - assets/images/background.jpg
 
 #
   fonts:

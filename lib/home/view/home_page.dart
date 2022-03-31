@@ -1,6 +1,7 @@
+import 'package:makely/home/home.dart';
+import 'package:task_repository/task_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:makely/authentication/authentication.dart';
 
 class HomePage extends StatelessWidget {
   static Route route() {
@@ -10,29 +11,14 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Home')),
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Builder(
-              builder: (context) {
-                final userId = context.select(
-                      (AuthenticationBloc bloc) => bloc.state.user.id,
-                );
-                return Text('UserID: $userId');
-              },
-            ),
-            ElevatedButton(
-              child: const Text('Logout'),
-              onPressed: () {
-                context
-                    .read<AuthenticationBloc>()
-                    .add(AuthenticationLogoutRequested());
-              },
-            ),
-          ],
-        ),
+      backgroundColor: Colors.grey,
+      body: BlocProvider(
+        create: (context) {
+          return HomeBloc(
+            taskRepository: TaskRepository(),
+          );
+        },
+        child: HomeForm(),
       ),
     );
   }
